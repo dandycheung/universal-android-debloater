@@ -277,7 +277,7 @@ pub async fn get_device_list() -> Vec<Phone> {
         Ok(devices) => {
             let mut device_list: Vec<Phone> = vec![];
             for device in RE.captures_iter(&devices) {
-                env::set_var("ANDROID_SERIAL", device[1].to_string());
+                env::set_var("ANDROID_SERIAL", &device[1]);
 
                 device_list.push(Phone {
                     model: get_phone_brand(),
